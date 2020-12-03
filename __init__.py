@@ -12,7 +12,6 @@ class WhatWordsLocations(MycroftSkill):
         getwordlist = message.data["wordlist"]
         splitwords = getwordlist.split(" ")
         joinwordformat = ".".join(splitwords)
-        print(joinwordformat)
         output = self.what_three_words(joinwordformat)
 
     def what_three_words(self, words):
@@ -24,7 +23,7 @@ class WhatWordsLocations(MycroftSkill):
             response = json_value['nearestPlace']
             self.speak(response)
         except:
-            self.speak("I didn't find any coordinates matching" + words)
+            self.speak("I didn't find any coordinates matching" + wordlist)
 
 def create_skill():
     return WhatWordsLocations()
