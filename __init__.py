@@ -12,6 +12,7 @@ class WhatWordsLocations(MycroftSkill):
         getwordlist = message.data["wordlist"]
         splitwords = getwordlist.split(" ")
         joinwordformat = ".".join(splitwords)
+        print(joinwordformat)
         output = self.what_three_words(joinwordformat)
 
     def what_three_words(self, words):
