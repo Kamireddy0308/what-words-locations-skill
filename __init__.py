@@ -24,7 +24,7 @@ class WhatWordsLocations(MycroftSkill):
             response = json_value['nearestPlace']
             self.speak(response)
         except:
-            self.speak("I didn't find any coordinates matching" + wordlist)
+            self.speak("I didn't find any coordinates matching" + words)
 
 def create_skill():
     return WhatWordsLocations()
