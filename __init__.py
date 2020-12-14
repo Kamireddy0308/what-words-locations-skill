@@ -15,16 +15,18 @@ class WhatWordsLocations(MycroftSkill):
         output = self.what_three_words(joinwordformat)
  
     def what_three_words(self, words):
+        parameters = ['nearestPlace','country','square','coordinates']
+        response = []
         url = 'https://api.what3words.com/v3/convert-to-coordinates?words={0}&key=4WBPDAOJ'.format(words)
         print(url)
         value = requests.get(url)
         json_value = value.json()
         try:
-            response = json_value['nearestPlace']
+            for i in parameters:
+                response.append(json_value[i])
             self.speak(response)
         except:
             self.speak("I didn't find any coordinates matching" + words)
         
 def create_skill():
     return WhatWordsLocations()
-
