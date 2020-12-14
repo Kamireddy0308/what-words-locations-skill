@@ -19,11 +19,11 @@ class WhatWordsLocations(MycroftSkill):
         value = requests.get(url)
         json_value = value.json()
         try:
-            response = json_value['nearestPlace']
+            response = json_value['square']
             self.speak(response)
             response = json_value['country']
             self.speak(response)
-            response = json_value['square']
+            response = json_value['nearestPlace']
             self.speak(response)
         except:
             self.speak("I didn't find any coordinates matching" + words)
