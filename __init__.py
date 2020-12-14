@@ -19,8 +19,6 @@ class WhatWordsLocations(MycroftSkill):
         value = requests.get(url)
         json_value = value.json()
         try:
-            response = json_value['square']
-            self.speak(json_value)
             response = json_value['country']
             self.speak(response)
             response = json_value['nearestPlace']
