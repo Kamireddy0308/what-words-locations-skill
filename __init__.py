@@ -29,8 +29,7 @@ class WhatWordsLocations(MycroftSkill):
             self.speak(response)
             response = json_value['words']
             self.speak(response)
-            response = json_value['coordinates']
-            response = response['lng']
+            response = json_value['coordinates']['lng'] 
             self.speak(response)
             
             
