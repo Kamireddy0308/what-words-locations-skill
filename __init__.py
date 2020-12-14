@@ -29,6 +29,10 @@ class WhatWordsLocations(MycroftSkill):
             self.speak(response)
             response = json_value['words']
             self.speak(response)
+            response = json_value['coordinates']
+            response = response['lng']
+            self.speak(response)
+            
             
         except:
             self.speak("I didn't find any coordinates matching" + words)
