@@ -24,7 +24,7 @@ class WhatWordsLocations(MycroftSkill):
         try:
             for i in parameters:
                 response.append(json_value[i])
-            self.speak(response)
+                self.speak(response)
         except:
             self.speak("I didn't find any coordinates matching" + words)
         
