@@ -16,12 +16,14 @@ class WhatWordsLocations(MycroftSkill):
  
     def what_three_words(self, words):
         url = 'https://api.what3words.com/v3/convert-to-coordinates?words={0}&key=4WBPDAOJ'.format(words)
-        print(url)
         value = requests.get(url)
         json_value = value.json()
         try:
             response = json_value['nearestPlace']
-            print(response)
+            self.speak(response)
+            response = json_value['country']
+            self.speak(response)
+            response = json_value['coordinates']
             self.speak(response)
         except:
             self.speak("I didn't find any coordinates matching" + words)
