@@ -4,8 +4,8 @@ import json
 from mycroft.util.log import LOG
 
 class WhatWordsLocations(MycroftSkill):
-    def _init_(self):
-        MycroftSkill._init_(self)
+    def init(self):
+        MycroftSkill.init(self)
 
     @intent_file_handler('locations.words.what.intent')
     def handle_locations_words_what(self, message):
@@ -15,15 +15,13 @@ class WhatWordsLocations(MycroftSkill):
         output = self.what_three_words(joinwordformat)
  
     def what_three_words(self, words):
-        parameters = ['nearestPlace','country','square','coordinates']
-        response = []
         url = 'https://api.what3words.com/v3/convert-to-coordinates?words={0}&key=4WBPDAOJ'.format(words)
         print(url)
         value = requests.get(url)
         json_value = value.json()
         try:
-            for i in parameters:
-                response.append(json_value[i])
+            response = json_value['nearestPlace']
+            print(response)
             self.speak(response)
         except:
             self.speak("I didn't find any coordinates matching" + words)
